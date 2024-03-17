@@ -1,0 +1,40 @@
+﻿<Window x:Class="UebungTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UebungTest"
+        mc:Ignorable="d"
+        xmlns:MVVMLib="clr-namespace:MVVM_Lib;assembly=MVVM_Lib"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.DataContext>
+        <MVVMLib:ViewModel></MVVMLib:ViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ComboBox Name="cbo" ItemsSource="{Binding Vaccines}" SelectionChanged="cbo_SelectionChanged" SelectedItem="{Binding SelectedVacine}"></ComboBox>
+            <Label Name="lbl1" Grid.Row="1" Content="{Binding SelectedVacine}"></Label>
+            <ComboBox Name="cbo2" Grid.Row="2" SelectionChanged="cbo_SelectionChanged" ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoc}"></ComboBox>
+            <Label Name="lbl2" Grid.Row="3" Content="{Binding SelectedDoc}"></Label>
+            <DatePicker Name="datenbepp" Grid.Row="5" SelectedDateChanged="cbo_SelectionChanged"></DatePicker>
+            <Button Name="addBtn" Grid.Row="8" Content="Adden" Click="addBtn_Click" IsEnabled="False"></Button>
+        </Grid>
+        <DataGrid Grid.Column="1" ItemsSource="{Binding List}" Name="grid" SelectionChanged="cbo_SelectionChanged"></DataGrid>
+    </Grid>
+</Window>
